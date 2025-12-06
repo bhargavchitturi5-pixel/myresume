@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BR HAX - Cybersecurity Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+        
+        body {
+            background-color: #000;
+            color: #0f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Intense glitch effects */
+        .glitch-container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .glitch-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: -2;
+        }
+        
+        .glitch-bg::before,
+        .glitch-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            mix-blend-mode: difference;
+        }
+        
+        .glitch-bg::before {
+            animation: glitch-anim-1 0.7s infinite linear alternate-reverse;
+            background: linear-gradient(45deg, #000, #f0f, #000);
+        }
+        
+        .glitch-bg::after {
+            animation: glitch-anim-2 0.5s infinite linear alternate-reverse;
+            background: linear-gradient(135deg, #000, #0ff, #000);
+        }
+        
+        @keyframes glitch-anim-1 {
+            0% { transform: translate(0); opacity: 0.1; }
+            10% { transform: translate(-5px, 3px); opacity: 0.3; }
+            20% { transform: translate(-3px, -3px); opacity: 0.2; }
+            30% { transform: translate(4px, 2px); opacity: 0.4; }
+            40% { transform: translate(2px, -4px); opacity: 0.1; }
+            50% { transform: translate(-2px, 4px); opacity: 0.3; }
+            60% { transform: translate(-4px, -2px); opacity: 0.2; }
+            70% { transform: translate(3px, 5px); opacity: 0.4; }
+            80% { transform: translate(5px, -3px); opacity: 0.1; }
+            90% { transform: translate(-5px, 2px); opacity: 0.3; }
+            100% { transform: translate(0); opacity: 0.2; }
+        }
+        
+        @keyframes glitch-anim-2 {
+            0% { transform: translate(0); opacity: 0.2; }
+            15% { transform: translate(4px, -3px); opacity: 0.4; }
+            30% { transform: translate(-4px, 2px); opacity: 0.1; }
+            45% { transform: translate(3px, 4px); opacity: 0.3; }
+            60% { transform: translate(-3px, -4px); opacity: 0.2; }
+            75% { transform: translate(5px, -2px); opacity: 0.4; }
+            90% { transform: translate(-5px, 3px); opacity: 0.1; }
+            100% { transform: translate(0); opacity: 0.3; }
+        }
+        
+        /* Header with CIA logo */
+        header {
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid #0f0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1;
+        }
+        
+        .cia-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #0f0;
+            box-shadow: 0 0 15px #0f0;
+        }
+        
+        .cia-logo img {
+            width: 100px;
+            height: 100px;
+            filter: invert(1) sepia(1) saturate(5) hue-rotate(90deg);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #0f0;
+            animation: text-glitch 3s infinite;
+        }
+        
+        .alias {
+            color: #f0f;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            animation: alias-glitch 2s infinite;
+            text-shadow: 0 0 5px #f0f;
+        }
+        
+        /* Main content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #0f0;
+            background: rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px #0f0;
+        }
+        
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #0f0, #f0f, #0ff);
+            animation: scanline 2s linear infinite;
+        }
+        
+        h2 {
+            color: #0ff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #0ff;
+            padding-bottom: 0.5rem;
+            text-shadow: 0 0 5px #0ff;
+            animation: heading-glitch 5s infinite;
+        }
+        
+        h3 {
+            color: #0f0;
+            margin: 1rem 0 0.5rem;
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px #0f0;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: ">";
+            color: #f0f;
+            position: absolute;
+            left: -1rem;
+        }
+        
+        /* Skill bars */
+        .skills-container {
+            margin-top: 1rem;
+        }
+        
+        .skill {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #0f0, #0ff);
+            position: relative;
+            animation: fill-bar 2s ease-out;
+        }
+        
+        .skill-level::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        /* Quotes section */
+        .quotes {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid #0f0;
+            background: rgba(0, 0, 0, 0.9);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px #0f0;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            padding: 0 2rem;
+            text-shadow: 0 0 5px #0f0;
+        }
+        
+        .quote::before,
+        .quote::after {
+            content: '"';
+            color: #0ff;
+            font-size: 1.5rem;
+            text-shadow: 0 0 5px #0ff;
+        }
+        
+        .quote::before {
+            position: absolute;
+            left: 0;
+            top: -0.5rem;
+        }
+        
+        .quote::after {
+            position: absolute;
+            right: 0;
+            bottom: -0.5rem;
+        }
+        
+        /* Animations */
+        @keyframes text-glitch {
+            0%, 100% { 
+                transform: translate(0);
+                text-shadow: 0 0 10px #0f0;
+            }
+            25% { 
+                transform: translate(-2px, 2px);
+                text-shadow: 2px 0 5px #f0f, -2px 0 5px #0ff;
+            }
+            50% { 
+                transform: translate(2px, -2px);
+                text-shadow: -2px 0 5px #0ff, 2px 0 5px #f0f;
+            }
+            75% { 
+                transform: translate(-2px, -2px);
+                text-shadow: 2px 0 5px #0ff, -2px 0 5px #f0f;
+            }
+        }
+        
+        @keyframes alias-glitch {
+            0%, 100% { 
+                transform: translate(0);
+                opacity: 1;
+            }
+            33% { 
+                transform: translate(3px, 0);
+                opacity: 0.8;
+            }
+            66% { 
+                transform: translate(-3px, 0);
+                opacity: 0.8;
+            }
+        }
+        
+        @keyframes heading-glitch {
+            0%, 100% { 
+                transform: translate(0);
+            }
+            5% { 
+                transform: translate(-1px, 1px);
+            }
+            10% { 
+                transform: translate(1px, -1px);
+            }
+            15% { 
+                transform: translate(0);
+            }
+            85% { 
+                transform: translate(0);
+            }
+            90% { 
+                transform: translate(2px, 0);
+            }
+            95% { 
+                transform: translate(-2px, 0);
+            }
+        }
+        
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        @keyframes fill-bar {
+            0% { width: 0; }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Random glitch effect */
+        .random-glitch {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0;
+        }
+        
+        .random-glitch.active {
+            animation: random-glitch 0.1s;
+        }
+        
+        @keyframes random-glitch {
+            0% { 
+                background: linear-gradient(45deg, transparent 49%, #f0f 50%, transparent 51%);
+                opacity: 0.7;
+            }
+            100% { 
+                background: linear-gradient(45deg, transparent 49%, #0ff 50%, transparent 51%);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .alias {
+                font-size: 1.2rem;
+            }
+            
+            section {
+                padding: 1rem;
+            }
+            
+            .cia-logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .cia-logo img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glitch-container">
+        <div class="glitch-bg"></div>
+        <div class="random-glitch" id="randomGlitch"></div>
+        
+        <header>
+            <div class="cia-logo">
+                <!-- CIA logo as SVG -->
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#000" stroke="#0f0" stroke-width="2"/>
+                    <path d="M35,30 L65,30 L65,45 L50,60 L35,45 Z" fill="#0f0"/>
+                    <circle cx="50" cy="40" r="8" fill="#000" stroke="#0f0" stroke-width="1"/>
+                    <text x="50" y="80" text-anchor="middle" fill="#0f0" font-family="Arial, sans-serif" font-size="12" font-weight="bold">CIA</text>
+                </svg>
+            </div>
+            <h1>Bhargav Ram Kumar</h1>
+            <div class="alias">BR HAX</div>
+            <p>Cybersecurity Professional</p>
+        </header>
+        
+        <div class="container">
+            <section class="profile">
+                <h2>Professional Profile</h2>
+                <p>Cybersecurity specialist with expertise in ethical hacking, vulnerability assessment, and security architecture. Passionate about protecting digital infrastructure and staying ahead of emerging threats in the cybersecurity landscape.</p>
+            </section>
+            
+            <section class="skills">
+                <h2>Technical Skills</h2>
+                <div class="skills-container">
+                    <div class="skill">
+                        <div class="skill-info">
+                            <span>Coding</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill">
+                        <div class="skill-info">
+                            <span>Hacking</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill">
+                        <div class="skill-info">
+                            <span>Linux</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill">
+                        <div class="skill-info">
+                            <span>Hardware</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="experience">
+                <h2>Professional Experience</h2>
+                
+                <h3>Senior Security Analyst | SecureNet Solutions</h3>
+                <p>2020 - Present</p>
+                <ul>
+                    <li>Conducted penetration tests on corporate networks and web applications</li>
+                    <li>Developed security protocols and incident response plans</li>
+                    <li>Managed vulnerability assessment programs reducing security risks by 40%</li>
+                    <li>Trained junior analysts in advanced threat detection techniques</li>
+                </ul>
+                
+                <h3>Cybersecurity Consultant | Freelance</h3>
+                <p>2018 - 2020</p>
+                <ul>
+                    <li>Provided security assessments for small to medium businesses</li>
+                    <li>Implemented security controls and compliance frameworks</li>
+                    <li>Developed custom security tools for client-specific needs</li>
+                </ul>
+            </section>
+            
+            <section class="education">
+                <h2>Education & Certifications</h2>
+                <ul>
+                    <li>M.S. in Cybersecurity - Stanford University</li>
+                    <li>B.S. in Computer Science - MIT</li>
+                    <li>Certified Ethical Hacker (CEH)</li>
+                    <li>Certified Information Systems Security Professional (CISSP)</li>
+                    <li>Offensive Security Certified Professional (OSCP)</li>
+                </ul>
+            </section>
+            
+            <section class="hobbies">
+                <h2>Hobbies & Interests</h2>
+                <ul>
+                    <li>Ethical Hacking & Security Research</li>
+                    <li>Programming & Script Development</li>
+                    <li>Reading Cybersecurity Literature</li>
+                    <li>Contributing to Open Source Security Projects</li>
+                    <li>Digital Art & Aesthetic Design</li>
+                </ul>
+            </section>
+            
+            <section class="contact">
+                <h2>Contact Information</h2>
+                <ul>
+                    <li>Email: brhax@securemail.com</li>
+                    <li>Website: brhax-security.io</li>
+                    <li>GitHub: github.com/brhax</li>
+                    <li>Location: Global Network</li>
+                </ul>
+            </section>
+            
+            <section class="quotes">
+                <h2>Aesthetic Quotes</h2>
+                <div class="quote">"In the realm of ones and zeros, security is not a feature - it's a foundation."</div>
+                <div class="quote">"The strongest firewall is the human mind trained to recognize threats."</div>
+                <div class="quote">"Code with purpose, hack with ethics, secure with passion."</div>
+                <div class="quote">"Behind every secure system is a curious mind that questioned its vulnerabilities."</div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Add intense glitch effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const glitchElements = document.querySelectorAll('h1, h2, .alias');
+            const randomGlitch = document.getElementById('randomGlitch');
+            
+            // Text glitch effect
+            setInterval(() => {
+                glitchElements.forEach(el => {
+                    if (Math.random() > 0.7) {
+                        el.style.textShadow = `2px 0 #f0f, -2px 0 #0ff`;
+                        setTimeout(() => {
+                            el.style.textShadow = '0 0 10px #0f0';
+                        }, 100);
+                    }
+                });
+            }, 300);
+            
+            // Random full-screen glitch effect
+            setInterval(() => {
+                if (Math.random() > 0.8) {
+                    randomGlitch.classList.add('active');
+                    setTimeout(() => {
+                        randomGlitch.classList.remove('active');
+                    }, 100);
+                }
+            }, 2000);
+            
+            // Section glitch effect
+            const sections = document.querySelectorAll('section');
+            setInterval(() => {
+                sections.forEach(section => {
+                    if (Math.random() > 0.9) {
+                        section.style.transform = 'translateX(' + (Math.random() * 6 - 3) + 'px)';
+                        setTimeout(() => {
+                            section.style.transform = 'translateX(0)';
+                        }, 50);
+                    }
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>
